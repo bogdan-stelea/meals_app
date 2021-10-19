@@ -6,15 +6,15 @@ class CategoryItem extends StatelessWidget {
   final String title;
   final Color color;
 
-  const CategoryItem({Key? key, this.id, required this.title, required this.color}) : super(key: key);
+  const CategoryItem({Key? key,required this.id, required this.title, required this.color}) : super(key: key);
 
   void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return CategoryMealsScreen(categoryTitle: title,categoryId: id);
-        },
-      ),
+    Navigator.of(ctx).pushNamed(
+      CategoryMealsScreen.routeName,
+      arguments: {
+        'id': id,
+        'title': title,
+      },
     );
   }
 
